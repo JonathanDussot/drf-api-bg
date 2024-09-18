@@ -38,6 +38,9 @@ ALLOWED_HOSTS = [
     '8000-jonathandussot-drfapibg-5121lj34hko.ws-eu116.gitpod.io',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-jonathandussot-drfapibg-5121lj34hko.ws-eu116.gitpod.io',
+]
 
 # Application definition
 
