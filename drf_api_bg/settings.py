@@ -62,7 +62,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-jonathandussot-drfapibg-5121lj34hko.ws-eu116.gitpod.io',
-    '.herokuapp.com',
+    'localhost', 'drf-api-bg.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
