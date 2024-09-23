@@ -67,7 +67,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-jonathandussot-drfapibg-5121lj34hko.ws-eu116.gitpod.io',
-    'https://ddrf-api-bg.herokuapp.com',
+    'https://drf-api-bg.herokuapp.com',
 ]
 
 # Application definition
