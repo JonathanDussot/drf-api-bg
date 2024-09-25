@@ -33,7 +33,7 @@ class Post(models.Model):
     )
     solo_play = models.BooleanField(default=False)
     image = models.ImageField(
-        upload_to='images/', default='../default_post_ynmksg', blank=True
+        upload_to='images/', default='images/default_post_ynmksg', blank=True
     )
     genre_filter = models.CharField(
         max_length=32, choices=genre_filter_choices, default='normal'
