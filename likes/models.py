@@ -7,7 +7,7 @@ class Like(models.Model):
     """
     Like model, related to 'owner' and 'game'.
     'owner' is a User instance and 'game' is a Game instance.
-    'unique_together' makes sure a user can't like the same post twice.
+    'unique_together' makes sure a user can't like the same game twice.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(

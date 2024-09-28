@@ -10,7 +10,7 @@ class GameListViewTests(APITestCase):
 
     def test_can_list_games(self):
         adam = User.objects.get(username='adam')
-        Post.objects.create(owner=adam, title='a title')
+        Game.objects.create(owner=adam, title='a title')
         response = self.client.get('/games/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         print(response.data)
@@ -18,7 +18,7 @@ class GameListViewTests(APITestCase):
 
     def test_logged_in_user_can_create_game(self):
         self.client.login(username='adam', password='pass')
-        response = self.client.post('/games/', {'title': 'a title'})
+        response = self.client.game('/games/', {'title': 'a title'})
         count = Game.objects.count()
         self.assertEqual(count, 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -40,12 +40,12 @@ class GameDetailViewTests(APITestCase):
         )
 
     def test_can_retrieve_game_using_valid_id(self):
-        response = self.client.get('/posts/1/')
+        response = self.client.get('/games/1/')
         self.assertEqual(response.data['title'], 'a title')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_cant_retrieve_game_using_invalid_id(self):
-        response = self.client.get('/posts/999/')
+        response = self.client.get('/games/999/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_user_can_update_own_game(self):

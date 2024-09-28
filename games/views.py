@@ -8,8 +8,8 @@ from .serializers import GameSerializer
 
 class GameList(generics.ListCreateAPIView):
     """
-    List posts or create a post if logged in
-    The perform_create method associates the post with the logged in user.
+    List games or create a game if logged in
+    The perform_create method associates the game with the logged in user.
     """
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -42,7 +42,7 @@ class GameList(generics.ListCreateAPIView):
 
 class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit or delete it if you own it.
+    Retrieve a game and edit or delete it if you own it.
     """
     serializer_class = GameSerializer
     permission_classes = [IsOwnerOrReadOnly]
