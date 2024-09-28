@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from posts.models import Post
+from games.models import Game
 from likes.models import Like
 
 
-class PostSerializer(serializers.ModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -33,13 +33,13 @@ class PostSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
-                owner=user, post=obj
+                owner=user, game=obj
             ).first()
             return like.id if like else None
         return None
 
     class Meta:
-        model = Post
+        model = Game
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'title', 'description',

@@ -4,9 +4,9 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 
-class Post(models.Model):
+class Game(models.Model):
     """
-    Post model, related to 'owner', i.e. a User instance.
+    Game model, related to 'owner', i.e. a User instance.
     Default image set so that we can always reference image.url.
     """
     genre_filter_choices = [

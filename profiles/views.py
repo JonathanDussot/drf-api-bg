@@ -12,14 +12,14 @@ class ProfileList(generics.ListAPIView):
     No create view as profile creation is handled by django signals.
     """
     queryset = Profile.objects.annotate(
-        posts_count=Count('owner__post', distinct=True),
+        games_count=Count('owner__game', distinct=True),
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [
         filters.OrderingFilter
     ]
     ordering_fields = [
-        'posts_count',
+        'games_count',
     ]
 
 
@@ -29,6 +29,6 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
-        posts_count=Count('owner__post', distinct=True),
+        games_count=Count('owner__game', distinct=True),
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
