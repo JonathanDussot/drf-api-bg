@@ -94,7 +94,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'games',
-    'comments',
+    'reviews',
     'likes',
 ]
 SITE_ID = 1

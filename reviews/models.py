@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from games.models import Game
 
 
-class Comment(models.Model):
+class Review(models.Model):
     """
-    Comment model, related to User and Game
+    Review model, related to User and Game
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)

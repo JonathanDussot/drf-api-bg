@@ -15,7 +15,7 @@ class GameList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Game.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        reviews_count=Count('review', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -32,7 +32,7 @@ class GameList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         'likes_count',
-        'comments_count',
+        'reviews_count',
         'likes__created_at',
     ]
 
@@ -48,5 +48,5 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Game.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        reviews_count=Count('review', distinct=True)
     ).order_by('-created_at')

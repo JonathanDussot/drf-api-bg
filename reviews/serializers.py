@@ -1,9 +1,9 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
-from .models import Comment
+from .models import Review
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -22,7 +22,7 @@ class CommentSerializer(serializers.ModelSerializer):
         return naturaltime(obj.updated_at)
 
     class Meta:
-        model = Comment
+        model = Review
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'post', 'created_at', 'updated_at',
@@ -30,9 +30,9 @@ class CommentSerializer(serializers.ModelSerializer):
         ]
 
 
-class CommentDetailSerializer(CommentSerializer):
+class ReviewDetailSerializer(ReviewSerializer):
     """
-    Serializer for the Comment model used in Detail view
-    Post is a read only field so that we dont have to set it on each update
+    Serializer for the Review model used in Detail view
+    Game is a read only field so that we dont have to set it on each update
     """
-    post = serializers.ReadOnlyField(source='post.id')
+    game = serializers.ReadOnlyField(source='game.id')
