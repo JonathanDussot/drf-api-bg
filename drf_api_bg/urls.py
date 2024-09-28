@@ -29,4 +29,5 @@ urlpatterns = [
     path('', include('games.urls')),
     path('', include('reviews.urls')),
     path('', include('likes.urls')),
+    path('', include('ratings.urls')),
 ]

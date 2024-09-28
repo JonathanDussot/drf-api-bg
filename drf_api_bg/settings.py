@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     'games',
     'reviews',
     'likes',
+    'ratings',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
