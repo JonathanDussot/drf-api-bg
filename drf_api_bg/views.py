@@ -5,5 +5,5 @@ from rest_framework.response import Response
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my drf API! This is where the fun begins!"
+        "message": "Welcome to my drf API! Should be able to see this!"
     })
