@@ -21,10 +21,10 @@ class Game(models.Model):
     ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    description = models.TextField(null=True)
-    designer = models.CharField(max_length=255, null=True)
-    artist = models.CharField(max_length=255, null=True)
-    publisher = models.CharField(max_length=255, null=True)
+    description = models.TextField()
+    designer = models.CharField(max_length=255, blank=True, null=True)
+    artist = models.CharField(max_length=255, blank=True, null=True)
+    publisher = models.CharField(max_length=255, blank=True, null=True)
     min_players = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -36,7 +36,7 @@ class Game(models.Model):
         upload_to='images/', default='images/default_post_ynmksg', blank=True
     )
     genre_filter = models.CharField(
-        max_length=32, choices=genre_filter_choices, default='normal'
+        max_length=32, choices=genre_filter_choices, default='none'
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
