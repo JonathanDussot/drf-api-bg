@@ -13,6 +13,20 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = ['id', 'owner', 'rating', 'game', 'created_at']
         
+
+    def validate(self, data):
+        """
+        Ensure that the user has not already rated the game.
+        """
+        user = self.context['request'].user
+        game = data['game']
+        
+        # Check if this user has already rated the game
+        if Rating.objects.filter(owner=user, game=game).exists():
+            raise serializers.ValidationError('You have already rated this game.')
+        
+        return data
+        
         
     def create(self, validated_data):
         try:
