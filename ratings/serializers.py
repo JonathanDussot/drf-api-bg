@@ -8,10 +8,11 @@ class RatingSerializer(serializers.ModelSerializer):
     """
     
     owner = serializers.ReadOnlyField(source='owner.username')
+    profile_image = serializers.ImageField(source='owner.profile.image.url', read_only=True)
     
     class Meta:
         model = Rating
-        fields = ['id', 'owner', 'rating', 'game', 'created_at']
+        fields = ['id', 'owner', 'profile_image', 'rating', 'game', 'created_at']
         
 
     def validate(self, data):
