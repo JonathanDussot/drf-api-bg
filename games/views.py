@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Avg
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_api_bg.permissions import IsOwnerOrReadOnly
@@ -15,7 +15,9 @@ class GameList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Game.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        reviews_count=Count('review', distinct=True)
+        reviews_count=Count('review', distinct=True),
+        average_rating=Avg('ratings__rating'),
+        rating_count=Count('ratings', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -33,6 +35,8 @@ class GameList(generics.ListCreateAPIView):
     ordering_fields = [
         'likes_count',
         'reviews_count',
+        'rating_count',
+        'average_rating',
         'likes__created_at',
     ]
 
@@ -48,5 +52,7 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Game.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        reviews_count=Count('review', distinct=True)
+        reviews_count=Count('review', distinct=True),
+        average_rating=Avg('ratings__rating'),
+        rating_count=Count('ratings', distinct=True)
     ).order_by('-created_at')
