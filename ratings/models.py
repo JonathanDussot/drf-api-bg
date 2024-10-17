@@ -8,7 +8,7 @@ class Rating(models.Model):
     Rating model with related name ratings
     """
     rating = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        validators=[MinValueValidator(1), MaxValueValidator(6)],
         default=3,
     )
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='ratings')
