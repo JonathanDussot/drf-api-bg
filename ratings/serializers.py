@@ -23,7 +23,7 @@ class RatingSerializer(serializers.ModelSerializer):
         game = data['game']
         
         # Check if this user has already rated the game
-        if Rating.objects.filter(owner=user, game=game).exists():
+        if self.instance is None and Rating.objects.filter(owner=user, game=game).exists():
             raise serializers.ValidationError('You have already rated this game.')
         
         return data
