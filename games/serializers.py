@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from django.db.models import Avg
 from games.models import Game
 from likes.models import Like
+from ratings.models import Rating
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -11,6 +13,8 @@ class GameSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     reviews_count = serializers.ReadOnlyField()
+    rating_count = serializers.SerializerMethodField()
+    average_rating = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -38,6 +42,18 @@ class GameSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+        # Count the number of ratings for this game
+    def get_rating_count(self, obj):
+        return Rating.objects.filter(game=obj).count()
+
+    def get_average_rating(self, obj):
+        # Get all ratings, calculate the average
+        ratings = Rating.objects.filter(game=obj)
+        if ratings.exists():
+            average = ratings.aggregate(Avg('rating'))['rating__avg']
+            return round(average, 1)  # Round to one decimal place
+        return None  # Return 0 if no ratings
+
     class Meta:
         model = Game
         fields = [
@@ -48,4 +64,5 @@ class GameSerializer(serializers.ModelSerializer):
             'image', 'genre_filter',
             'like_id', 'likes_count',
             'updated_at', 'created_at', 'reviews_count',
+            'rating_count', 'average_rating',
         ]
