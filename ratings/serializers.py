@@ -8,7 +8,7 @@ class RatingSerializer(serializers.ModelSerializer):
     """
     
     owner = serializers.ReadOnlyField(source='owner.username')
-    profile_image = serializers.ImageField(source='owner.profile.image.url', read_only=True)
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     
     class Meta:
         model = Rating
