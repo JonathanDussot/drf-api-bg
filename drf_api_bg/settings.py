@@ -61,7 +61,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-jonathandussot-drfapibg-5121lj34hko.ws-eu116.gitpod.io',
+    '8000-jonathandussot-drfapibg-2ox5zo9hu9q.ws.codeinstitute-ide.net',
     'localhost', 'drf-api-bg-3b2d4ec66887.herokuapp.com',
 ]
 
