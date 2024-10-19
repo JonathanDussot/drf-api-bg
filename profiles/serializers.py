@@ -13,7 +13,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_games_count(self, obj):
-        # Assuming the Game model has a ForeignKey to the Profile's owner (User)
         return Game.objects.filter(owner=obj.owner).count()
 
     class Meta:
