@@ -1,131 +1,595 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# DRF-API-BG
 
-Welcome JonathanDussot ,
+This is the backend for the *BoardGamers* app, built using Django Rest Framework. *BoardGamers* is a site that has been created solely with the purpose of sharing the passion of playing boardgames. The site allows users to create posts with some of their favourite games and others to give their personal reviews on the game, aswell as a like and/or rating of the game.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+You can check the Github for *BoardGamers* by clicking [here](https://github.com/JonathanDussot/boardgamers).
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+### Live Deployment
+- The live link for "BoardGamers" can be found [HERE](https://boardgamers-ci-364d7fb71032.herokuapp.com/)
 
-## Gitpod Reminders
+## Table of Contents
++ [BoardGamers Github (Frontend)](# "BoardGamers")
++ [Live Deployment](#live-deployment "Live Deployment")
++ [User Stories](#user-stories "User Stories")
+  + [Project User stories](#project "Project User stories")
+  + [Games User stories](#games "Games User stories")
+  + [Reviews User stories](#reviews "Reviews User stories")
+  + [Likes User stories](#likes "Likes User stories")
+  + [Ratings User stories](#ratings "Ratings User stories")
++ [](# "")
+  + [Colour Scheme](#colour-scheme "Colour Scheme")
+  + [Typography](#typography "Typography")
+  + [Imagery](#imagery "Imagery")
++ [Features](#features "Features")
+  + [Existing Features](#existing-features "Existing Features")
+  + [C.R.U.D](#crud "C.R.U.D")
++ [Testing](#testing "Testing")
+  + [Validator Testing](#validator-testing "Validator Testing")
+  + [Unfixed Bugs](#unfixed-bugs "Unfixed Bugs")
++ [Technologies Used](#technologies-used "Technologies Used")
+  + [Main Languages Used](#main-languages-used "Main Languages Used")
+  + [Frameworks, Libraries & Programs Used](#frameworks-libraries-programs-used "Frameworks, Libraries & Programs Used")
++ [Deployment](#deployment "Deployment")
++ [Credits](#credits "Credits")
+  + [Content](#content "Content")
+  + [Media](#media "Media")
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Stories
+- Here is a list of all my user stories which can be found in my backend [project](https://github.com/users/JonathanDussot/projects/5)which employs the Agile methodology approach in an organized manner, each with their labels as per MoSCoW prioritization of tasks. ![kanbanboard](images/kanban-board.png)
 
-`python3 -m http.server`
+### Profile
 
-A blue button should appear to click: _Make Public_,
+- [x] As a site/admin I can view a list of all created profiles.
+- [x] As a site admin I can login and logout so that I can create, edit or delete data.
+- [x] As a site admin I can enter a profile so that I can see all profile details.
+- [x] As a site admin I can edit and update personal information.
+- [x] As a site admin I can Delete a profile from the API.
 
-Another blue button should appear to click: _Open Browser_.
+### Games
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+- [x] As a site admin I can view a list of games created.
+- [x] As a site admin I can create a game with all requested details.
+- [x] As a site admin I can open a created game on the list so that I can see all of its details.
+- [x] As a site admin I can edit all game details.
+- [x] As a site admin I can Delete a game and its information stored in the API
 
-A blue button should appear to click: _Make Public_,
+### Reviews
 
-Another blue button should appear to click: _Open Browser_.
+- [x] As a site admin I can view a list of all reviews posted by users.
+- [x] As a site admin I can view a single review posted.
+- [x] As a site admin I can create a review for a game post.
+- [x] As a site admin I can edit the review information.
+- [x] As a site admin I can Delete a Review from the API.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Likes
 
-To log into the Heroku toolbelt CLI:
+- [x] As a site admin I can add a like for a games post.
+- [x] As a site admin I can edit and change a like saved in the API.
+- [x] As a site admin I can remove a like from the API.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Ratings
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- [x] As a site admin I can create a rating for a game post.
+- [x] As a site admin I can edit a rating given.
+- [x] As a site admin I can delete a rating from the API
 
-### Connecting your Mongo database
+## Models used and their datafields.
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+### Profile
 
-------
+owner = models.OneToOneField(User, on_delete=models.CASCADE)<br>
+created_at = models.DateTimeField(auto_now_add=True)<br>
+updated_at = models.DateTimeField(auto_now=True)<br>
+name = models.CharField(max_length=255, blank=True)<br>
+favourite_game = models.CharField(max_length=255, blank=True)<br>
+image = models.ImageField(upload_to='images/', default='../default_profile_yqtpvj')
 
-## Release History
+### Games
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
+title = models.CharField(max_length=255)<br>
+description = models.TextField()<br>
+designer = models.CharField(max_length=255, blank=True, null=True)<br>
+artist = models.CharField(max_length=255, blank=True, null=True)<br>
+publisher = models.CharField(max_length=255, blank=True, null=True)<br>
+min_players = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])<br>
+max_players = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])<br>
+solo_play = models.BooleanField(default=False)<br>
+image = models.ImageField(upload_to='images/', default='../default_post_ynmksg', blank=True)<br>
+genre_filter = models.CharField(max_length=32, choices=genre_filter_choices, default='none')<br>
+created_at = models.DateTimeField(auto_now_add=True)<br>
+updated_at = models.DateTimeField(auto_now=True)
 
-**June 18, 2024,** Add Mongo back into template
+### Reviews
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
+game = models.ForeignKey(Game, on_delete=models.CASCADE)<br>
+created_at = models.DateTimeField(auto_now_add=True)<br>
+updated_at = models.DateTimeField(auto_now=True)<br>
+content = models.TextField()
 
-**May 28 2024:** Fix Mongo and Links installs
+### Likes
 
-**April 26 2024:** Update node version to 16
+owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
+game = models.ForeignKey(Game, related_name='likes', on_delete=models.CASCADE)<br>
+created_at = models.DateTimeField(auto_now_add=True)
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Ratings
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)],default=3,)<br>
+game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='ratings')<br>
+owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
+created_at = models.DateTimeField(auto_now_add=True)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Site Goal:
+To create a community where various users can participate in sharing some of the most beautiful locations around the globe. We're also set on it being estalished as a top-quality comfort zone for travelers, whether traveling alone or as a family, so they can comfortably share and rely on experiences and tips given, such as the resources available.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Audience:
+Practically anybody with an interest in gorgeous landscapes since it makes for an excellent informative site on places to travel to and what to see.  Some may also be keen travelers who travel frequently.  Also, it's ideal for someone just seeking advice on what services to use abroad.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+### Communication:
+users are provided with user-friendly features to get in contact with site owner or other potential bloggers/users within the posts.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Existing User Goals:
+The capability of viewing, commenting on, and sharing experiences constantly within the community of travelers registered. Also, the potential to create collaborations to either facilitate a trip or support in other ways.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### New User Goals:
+To feel welcomed by several posts on beautiful imagery and scenery to be discovered throughout the website.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Future Goals:
+- To provide users with a GPS location of the location and it's proximite surroundings that can be taken advantage of.
+- Users and admin on the posts would be able to optionally provide specific recommendations in terms of hotel accomodations, or have the site provide default options based on the GPS location's proximity.
+- The option for other bloggers to create their own posts to be approved and shared among the community as opposed to just the site admin's travels & posts.
+- The ability to send out the monthly newsletter to subscribed user's emails with the newest experiences and possibly a contest with the chance to win a prize or souvenir.
+- A structure within the website to help users plan their flights and have a rough estimate of a necessary budget, which could eventually lead to a flight-purchasing website such as skyscanner. 
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## User Stories
+Not all stories have been implemented. Some have been left for future implementations as the site grows and expands.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Admin stories:
+#### As an admin:
+1. I can **create, read, update and delete posts** so that **I can manage my blog content**.
+ - Story points: 4
+2. I can **enter the subscription section** so that **I can see a list of subscribed emails**.
+ - Story points: 2
+3. I can **create and update the About page content** so that **it is available to view on the site.**.
+ - Story points: 1
+4. I can **create draft posts** so that **I can finish writing the content later.**.
+ - Story points: 2
+5. I can **approve or disapprove comments** so that **I can filter out objectionable comments.**.
+ - Story points: 2
+6. I can **store collaboration requests** so that **I can read submitted forms.**.
+ - Story points: 2
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Site User stories:
+#### As a site user:
+1. I can **leave comments on a post** so that **I can be involved in the conversation.**.
+ - Story points: 3
+2. I can **click on the Travel Resources section** so that **I can view the information provided**.
+ - Story points: 1
+3. I can **modify or delete my comment on a post** so that **I can be involved in the conversation**.
+ - Story points: 2
+4. I can **post a message to the Site Admin with my details** so that **I can propose an idea for collaboration.**.
+ - Story points: 2
+5. I can **register an account** so that **I can comment on a post.**.
+ - Story points: 3
+6. I can **view comments on an individual post** so that **I can read the conversation.**.
+ - Story points: 2
+7. I can **can click on the about link** so that **I can read information about the site and site admin.**.
+ - Story points: 1
+8. I can **click on a post** so that **I can read the full text.**.
+ - Story points: 1
+9. I can **view a paginated list of posts** so that **I can select which post I want to view.**.
+ - Story points: 3
+10. I can **enter my email** so that **I am subscribed to the newsletter service.**.
+ - Story points: 3
+11. I can **update my email** so that **I am subscribed to the newsletter service with the correct email address.**.
+ - Story points: 4
+12. I can **delete my email** so that **I am unsubscribed to the newsletter service.**.
+ - Story points: 4
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Design
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Wireframes:
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+#### Home Page: 
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+![Home Page](static/images-readme/wireframe-homepage.png)
 
-------
+#### Post Details Page:
 
-## FAQ about the uptime script
+![Post Details Page](static/images-readme/wireframe-postdetail-page.png)
 
-**Why have you added this script?**
+#### About Page:
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+![About Page](static/images-readme/wireframe-aboutpage.png)
 
-**How will this affect me?**
+#### Resources Page:
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![Resources Page](static/images-readme/wireframe-resourcespage.png)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+#### Newsletter Page:
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+![Newsletter Page](static/images-readme/wireframe-newsletter-page.png)
 
-**So….?**
+### Database Schema
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![Database Schema](static/images-readme/hidden-gems-erd-diagram.png)
 
-**Can I opt out?**
+### Colour Scheme:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+![Colour Palette](static/images-readme/colour-scheme.png)
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+- #fff - is typically used as my background colour and also text colour in the case of there being a dark-coloured background.
+- #212529 - is the text colour used throughout the webpage when there is a light-coloured background.
+- #188181 - to resemble some familiarity with the blue colour within the logo, a different shade was actually used to help with the colour contrast issues.
+- #F06814 - to resemble the orange colour within the logo and give a more familiar feeling throughout the webpage.
+- #445261 - is used in the mastheads within the post details html pages to contrast the image colours.
 
-**Anything more?**
+### Typography:
+All fonts were obtained from the Google Fonts library. I chose the following fonts for the page:
+1. Poppins: used for titles and Navbar elements such as the nav-items and text-muted phrase.
+2. Open Sans: Typically used for the body text of the webpage.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Imagery:
+- All images have been named in the credit section, most of which are photos of places, whereas the others related to travel are from free photo sites.
 
----
+## Features
 
-Happy coding!
+### Existing Features:
+
+#### Home Page:
+
+![Home page](static/images-readme/features-homepage.png)
+
+#### Navigation Bar:
+
+##### Desktop:
+
+![Navbar desktop](static/images-readme/features-desktop-navbar.png)
+
+##### Mobile:
+
+![Navbar mobile](static/images-readme/features-mobile-navbar.png)
+
+#### Paginated features:
+- Leads user to next/ previous page(s) assuming there's more posts than the page's limit.
+![paginated](static/images-readme/features-paginated.png)
+
+#### About Page:
+
+![About page](static/images-readme/features-aboutpage.png)
+
+#### Collaboration Form on About Page:
+
+![Collaboration form](static/images-readme/features-collaboration-request.png)
+
+#### Travel Resources Page:
+
+![Resources Page](static/images-readme/features-resourcespage.png)
+
+#### Post Details Page:
+
+![Post Details Page](static/images-readme/features-postdetails.png)
+
+#### Like button feature:
+
+![Like button feature](static/images-readme/features-like-system.png)
+
+#### Post Details Comment Section:
+
+![Post Details Comment Section](static/images-readme/features-comment-system.png)
+
+#### Log in, Log out & Sign up:
+
+##### Login:
+
+![Login](static/images-readme/features-signin-page.png)
+
+##### Logout:
+
+![Logout](static/images-readme/features-signout-page.png)
+
+##### Sign-up:
+
+![Sign-up](static/images-readme/features-signup-page.png)
+
+#### Footer:
+
+![Footer](static/images-readme/features-footer.png)
+
+### C.R.U.D:
+
+#### Newsletter Subscription Page - Create:
+- This gives users the option to sign up for the newsletter by entering their email before being alerted on the success of their subsription.
+- It is only visible to users who are signed in.
+![CRUD - create button](static/images-readme/features-subscription-page.png)
+
+#### Newsletter Subscription Page - Read:
+- User is alerted as to the successful subsription...
+![CRUD - read](static/images-readme/features-subscription-alert.png)
+- ...before being led to the email-list page with a display of the email(s) they have subscribed on their account alone.
+![CRUD - read(2)](static/images-readme/features-editsubscription-page.png)
+
+#### Newsletter Subscription Page - Update:
+- The user is given the option to edit the email address on their account alone.
+![CRUD - update](static/images-readme/features-updatesubscription-page.png)
+
+#### Newsletter Subscription Page - Delete:
+- The user is given the option to delete an email(s) and unscubscribe on their account alone.
+![CRUD - delete](static/images-readme/features-deletesubscription-page.png)
+
+### Features Left to Implement
+- System to send out newsletters.
+- newsletter contests.
+- flight reservation section.
+- GPS map showing location.
+- Hotels/ Other accomodation around the location using GPS.
+- Password reset.
+- Social media sign-in.
+
+## Testing
+
+### Validator Testing
+| **TEST** | **ACTION** | **EXPECTATION** | **RESULT** |
+| ----------------------------- | ----------------------- | --------------------------- | ---------- |
+| gems - settings.py | PEP8 validator | [No issues found](static/images-readme/pep8-validator-python.png) | ✅ |
+| gems - urls.py | PEP8 validator | No issues found | ✅ |
+| blog app - forms.py | PEP8 validator | No issues found | ✅ |
+| blog app - models.py | PEP8 validator | No issues found | ✅ |
+| blog app - views.py | PEP8 validator | No issues found | ✅ |
+| blog app - urls.py | PEP8 validator | No issues found | ✅ |
+| blog app - admin.py | PEP8 validator | No issues found | ✅ |
+| about app - forms.py | PEP8 validator | No issues found | ✅ |
+| about app - models.py | PEP8 validator | No issues found | ✅ |
+| about app - views.py | PEP8 validator | No issues found | ✅ |
+| about app - urls.py | PEP8 validator | No issues found | ✅ |
+| about app - admin.py | PEP8 validator | No issues found | ✅ |
+| newsletter app - forms.py | PEP8 validator | No issues found | ✅ |
+| newsletter app - models.py | PEP8 validator | No issues found | ✅ |
+| newsletter app - views.py | PEP8 validator | No issues found | ✅ |
+| newsletter app - urls.py | PEP8 validator | No issues found | ✅ |
+| newsletter app - admin.py | PEP8 validator | No issues found | ✅ |
+| resources app - forms.py | PEP8 validator | No issues found | ✅ |
+| resources app - models.py | PEP8 validator | No issues found | ✅ |
+| resources app - views.py | PEP8 validator | No issues found | ✅ |
+| resources app - urls.py | PEP8 validator | No issues found | ✅ |
+| resources app - admin.py | PEP8 validator | No issues found | ✅ |
+| style.css | [W3C - Jigsaw](https://jigsaw.w3.org/css-validator/) validator | [No issues found](static/images-readme/w3c-validator-css.png) | ✅ |
+| Home page - html | [W3C](https://validator.w3.org/) validator - source code | [No issues found](static/images-readme/w3c-validator-html.png) | ✅ |
+| About page - html | W3C validator - source code | No issues found | ✅ |
+| Post Details page - html | W3C validator - source code | No issues found | ✅ |
+| Resources page - html | W3C validator - source code | No issues found | ✅ |
+| Newsletter page - html | W3C validator - source code | No issues found | ✅ |
+| Sign-in page - html | W3C validator - source code | No issues found | ✅ |
+| Home page - html | lighthouse | [Acceptable scores](static/images-readme/lighthouse.png) | ✅ |
+| About page - html | lighthouse | Acceptable scores | ✅ |
+| Post-Details page - html | lighthouse | Acceptable scores | ✅ |
+| Resources page - html | lighthouse | Acceptable scores | ✅ |
+| Newsletter page - html | lighthouse | Acceptable scores | ✅ |
+| Sign-in page - html | lighthouse | Acceptable scores | ✅ |
+| WAVE results | WAVE | [Acceptable scores](static/images-readme/wave.png) | ✅ |
+| Microsoft Edge browser | Launch site | Site opens without issue | ✅ |
+| Google Chrome browser | Launch site | Site opens without issue | ✅ |
+
+### Responsiveness testing
+
+| **TEST**                      | **ACTION**              | **EXPECTATION**             | **RESULT** |
+| ----------------------------- | ----------------------- | --------------------------- | ---------- |
+| Home page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
+| Home page - responsiveness    | Size site up to 1920px  | all elements stay on screen | ✅         |
+| About page - responsiveness   | Size site down to 320px | all elements stay on screen | ✅         |
+| About page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
+| Post-Details page - responsiveness  | Size site down to 320px | all elements stay on screen | ✅         |
+| Post-Details page - responsiveness  | Size site up to 1920px  | all elements stay on screen | ✅         |
+| Resources page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
+| Resources page - responsiveness    | Size site up to 1920px  | all elements stay on screen | ✅         |
+| Newsletter page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
+| Newsletter page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
+| Sign-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
+| Sign-in page - responsiveness | Size site up to 1920px  | all elements stay on screen | ✅         |
+
+### C.R.U.D. testing
+
+| **TEST**          | **ACTION**             | **EXPECTATION**          | **RESULT** |
+| ----------------- | ---------------------- | ------------------------ | ---------- |
+| Newsletter subscription - Create     | Add new instance to DB | Instance created         | ✅         |
+| Newsletter subscription - Read       | Retrieve all instances | Instances visible in UI  | ✅         |
+| Newsletter subscription - Update     | Modify an instance     | Mods saved & visible     | ✅         |
+| Newsletter subscription - Delete     | Delete an instance     | Instance removed from UI | ✅         |
+| Comments - Create | Add new instance to DB | Instance created         | ✅         |
+| Comments - Read   | Retrieve all instances | Instances visible in UI  | ✅         |
+| Comments - Update | Add new instance to DB | Mods saved & visible     | ✅         |
+| Comments - Delete   | Retrieve all instances | Instance removed from UI | ✅         |
+| Like - Create | Add new instance to DB | Instance created         | ✅         |
+| Like - Delete | Delete an instance     | Instance removed from UI | ✅         |
+
+### FEATURES
+
+| **TEST**                      | **ACTION**             | **EXPECTATION**                                           | **RESULT** |
+| ----------------------------- | ---------------------- | --------------------------------------------------------- | ---------- |
+| Navigation bar                | Click on nav link      | user routed to correct page                               | ✅         |
+| Footer links                  | Click on footer links  | user routed to new browser tab                            | ✅         |
+| Like button                   | Click "like"           | Post liked/unliked accordingly                            | ✅         |
+| Comment section                   | Written empty message           | does not submit, prompts to write a message                            | ✅         |
+| Comment section                   | Write message and submit           | user informed on pending approval                            | ✅         |
+| Edit button                   | Click edit button      | user allowed to edit comment only if previously approved                             | ✅         |
+| Delete button                 | Click delete button    | user allowed to delete comment only if previously approved                                | ✅         |
+| Collaboration form                | Submit form    | user alerted on successful form                                | ✅         |
+| External links in Resources                | Click link             | User routed to appropriate webpage                           | ✅         |
+| Subscription                | enter invalid email             | User prompted to write a valid email                           | ✅         |
+| Subscription CRUD buttons                | Click buttons            | User routed to appropriate page and UI updated                    | ✅         |
+| Login                         | User logs in           | UI updates & user is logged in                            | ✅         |
+| Sign up                       | User signs up          | new account created for the user                          | ✅         |
+| Logout                        | User clicks logout     | UI updates, user is logged out, user cannot create a post | ✅         |
+
+### BUG TESTING:
+1. Heroku logs--tail error when deploying to Heroku:
+ - Added correctly-written web: gunicorn gems.wsgi to ProcFile to link it correctly.
+
+2. 'unexpected chunk number 1 (expected 0)' error:
+ - This was caused be corrupted Data upon using loaddata with json.file according to Tutor Support.
+ - Uncommented sqlite database and commented out external database to temporarily work on project before eventually providing a solution (mentioned in bug #3)
+
+3. Opening new external Database:
+ - Did pip install and pip freeze with all requirements, created env.py file, added new DB URL and secret key, collectstatic, updated CSRF, did makemigrations and migrate command and yet page would not load correctly.
+ - The cloudinary URL was missing within the env.py, this allowed the page to load correctly.
+
+4. CSS styles would not load:
+ - Upon using terminal command to copy staticfiles into a template folder, accidently created and nested everything within an additional templates folder so url path did not connect.
+ - Moved everything out to the correct template folder and css styles were loading correctly.
+
+5. Admin interface content lacked RichText Editor for content fields in resources app:
+ - summernote_fields was not correctly linked to content containers within the admin.py file.
+
+6. Likes generated an error:
+ - within the blog's models.py the model's related name for the like button clashed with the comment section, I changed the name so code could correctly distinguish model and this fixed the bug.
+
+7. Validator error message <o:p>:
+ - This was due to my population of the content fields having used my microsoft word to draft the tet before adding them to the admin interface, could not be seen in my code.
+ - Manually accessed and edited code from Admin interface and deleted the tags.
+
+8. Page would break when screen size was below 768px and only provide images:
+ - Deleted 'flex: no-wrap' to fix this issue and correctly display text with the images so users can access post details for each post.
+
+9. Editing a comment while awaiting approval:
+ - Page would crash is user were to click on the edit button before comment had been approved.
+ - Fixed the issue by removing the edit button for comments awaiting approval.
+
+10. Navbar overflow:
+ - Navbar displayed overflow off page between 1150px and 990px on all pages.
+ - Reduced the logo size, nav-link size and text-muted size so elements would not cause navbar to overflow before collapsing as media response styles take effect.
+
+11. Like button with a reverse path error:
+ - Upon correcting some of the hyphens and underscores, the blog's urls.py path had the correct pattern, but the views.py file still had **'post-detail'** instead of **post_detail** within the reverse function call.
+
+### Unfixed Bugs
+1. Sign up form - HTML Validator errors:
+- Upon validating, I noticed [4 errors with tags](static/images-readme/signup-html-errors.png) which were nowhere to be found within my code.
+- With help from Tutor Support, we determined this was from Django's Allauth's error and that I could do nothing to fix it from my end.
+
+## Technologies Used
+### Main Languages Used
+- HTML5
+- CSS3
+- Javascript
+- Python
+- Django
+- SQL - Postgres
+
+### Frameworks, Libraries & Programs Used
+- [Google Fonts](https://fonts.google.com/) - for the font families: 
+- [Font Awesome](fontawesome.com) - for the social network icons.
+- [GitPod](https://www.gitpod.io/) - for creating html files, css stylesheet and python files.
+- [GitHub](https://github.com/) - to store my repository for submission.
+- Google Dev tools - to test and fix issues detected.
+- [Pexels](https://www.pexels.com/) to use free images for site.
+- [Free Pik](https://www.freepik.es/) to use free images for site.
+- [Balsamiq](https://balsamiq.com/) - for the wireframe mockups of my webpage.
+- [Am I Responsive?](https://ui.dev/amiresponsive) - to ensure the webpage displayed well on all devices.
+- [Tiny PNG](https://tinypng.com/) to compress images.
+- [DrawSQL](https://drawsql.app/) - for ERD mockups
+- [FreeLogoDesign](https://app.freelogodesign.org/)
+- [Colormind.io](http://colormind.io/) to generate color palette used. 
+- [cdnjs](https://cdnjs.com/libraries/bootstrap) for bootstrap.
+- Django
+- Bootstrap
+
+### Installed Packages:
+- asgiref==3.8.1
+- cloudinary==1.36.0
+- crispy-bootstrap5==0.7
+- dj-database-url==0.5.0
+- dj3-cloudinary-storage==0.0.6
+- Django==5.0.7
+- django-allauth==0.57.2
+- django-crispy-forms==2.2
+- django-summernote==0.8.20.0
+- gunicorn==20.1.0
+- oauthlib==3.2.2
+- psycopg2==2.9.9
+- PyJWT==2.8.0
+- python3-openid==3.2.0
+- requests-oauthlib==2.0.0
+- sqlparse==0.5.0
+- urllib3==1.26.19
+- whitenoise==5.3.0
+
+## Deployment
+The site was deployed to Heroku. The steps to deploy are as follows:
+- Install Django & Gunicorn:
+```pip3 install Django~=4.2.1```
+- a django project was created using:
+```django-admin startproject gems .```
+- the blog app was then created with:
+```python3 manage.py startapp blog```
+- Install gunicorn to enable deployment to Heroku:
+```pip3 install gunicorn~=20.1```
+- Creating the requirements.txt file with the following command:
+```pip3 freeze --local > requirements.txt```
+- Install Django summernote:
+```pip3 install django-summernote~=0.8.20.0```
+- Install whitenoise for Heroku to serve its own static files:
+```pip3 install whitenoise~=5.3.0```
+- Add user authentication with the following:
+```pip3 install django-allauth~=0.57.0```
+- Install Cloudinary:
+```pip3 install django-crispy-forms~=2.0 crispy-bootstrap5~=0.7```
+- Install Cloudinary:
+```pip3 install cloudinary~=1.36.0 dj3-cloudinary-storage~=0.0.6 urllib3~=1.26.15```
+- Install Cloudinary:
+```pip3 install dj3-cloudinary-storage```
+- Install Cloudinary:
+```pip3 install dj3-cloudinary-storage```
+- which was then added to the settings.py file within our project directory.
+- the changes were then migrated using:
+```python3 manage.py makemigrations``` and ```python3 manage.py migrate```
+- Collectstatic command for all static files to be deployed without issue:
+```python3 manage.py collectstatic```
+- navigated to [Heroku](www.heroku.com) & created a new app called hidden-gem-blog.
+- added the Heroku Postgres database to the Resources tab.
+- navigated to the Settings Tab, to add the following key/value pairs to the configvars:
+1. key: SECRET_KEY | value: randomkey
+2. key: PORT | value: 8000
+3. key: CLOUDINARY_URL | value: API environment variable
+4. key: DATABASE_URL | value: value supplied by Heroku
+- added the DATABASE_URL, SECRET_KEY & CLOUDINARY_URL to the env.py file
+- added the DATABASE_URL, SECRET_KEY & CLOUDINARY_URL to the settings.py file
+- add an import os statement for the env.py file.
+- added Heroku to the ALLOWED_HOSTS in settings.py
+- created the Procfile
+- pushed the project to Github
+- connected my github account to Heroku through the Deploy tab
+- connected my github project repository, and then clicked on the "Deploy" button
+- The live link for "Hidden Gems" can be found [HERE](https://hidden-gem-blog-d08378ae9ea1.herokuapp.com/)
+
+## Credits
+
+### Content
+- “I think therefore I blog” walkthrough: Assisted me hugelyfrom the start with initial steps such as commands, adding apps, designing models and the many installed apps and their purposes.  Permitted me to add on to them and expand what I already had.
+- Slack community for the vast amount of support and information available to clear doubts and help with potential bugs.
+- Tutor Support for their constant support with some of the questions or issues I had and the patience to make everything so clear and such a pleasant learning experience.
+- CI for providing us with an exclusive Gitpod which helped tremendously considering the amount of hours dedicated to putting this project together, and hopefully many more for the future implementations and improvements to be made.
+- **Location content**:
+- [Royal Alaska Movers](https://www.royalalaskanmovers.com/north-pole-alaska-visitors-guide/) provided me with the content for Santa Claus's house within the blog posts.
+- [Komoot](https://www.komoot.com/guide/1812719/attractions-in-fairbanks-north-star-borough) provided me with the content for the northern lights within the blog posts.
+- [The Culture Trip](https://theculturetrip.com/south-america/peru/articles/how-to-visit-the-nazca-lines-in-peru) provided me with the content for the Nazca Lines within the blog posts.
+- [Osprey Expeditions](https://ospreyexpeditions.com/interesting-facts-about-cano-cristales/) provided me with the content for Cano Cristales within the blog posts.
+- [Forbes](https://www.forbes.com/sites/trevornace/2016/03/02/rainbow-mountains-china-earths-paint-palette/) provided me with the content for the Rainbow mountains in China within the blog posts.
+- [Atlas Obscura](https://www.atlasobscura.com/places/santa-maria-dellisola-monastery) provided me with the content for the Monastery of Santa Maria Tropea within the blog posts.
+- [Great Blue Hole](https://greatbluehole.net/) provided me with the content for the Great Blue Hole within the blog posts.
+- [Jrailpass](https://www.jrailpass.com/blog/ashikaga-flower-park#:~:text=The%20Ashikaga%20Flower%20Park%20first,monument%20by%20the%20Tochigi%20Prefecture) provided me with the content for Ashikaga Flower Park within the blog posts.
+- [Neuschwanstein Tickets](https://neuschwansteintickets.com/) provided me with the content for Neuschwanstein Castle within the blog posts.
+- [Waitomo](https://www.waitomo.com/glowworms-and-caves/waitomo-glowworm-caves) provided me with the content for the Glow-worm Caves within the blog posts.
+- [Indonesia Travel](https://www.indonesia.travel/gb/en/destinations/bali-nusa-tenggara/flores/lake-kelimutu.html) provided me with the content for the Kelimutu lakes within the blog posts.
+- [Inside Kyoto](https://www.insidekyoto.com/arashiyama-bamboo-grove) provided me with the content for the Bamboo Groves within the blog posts.
+- [https://ukraine.ua](https://ukraine.ua/cities-places/tunnel-of-love/) provided me with the content for the tunnel of love within the blog posts.
+- [Go Visit Costa Rica](https://www.govisitcostarica.com/region/city.asp?cID=69) provided me with the content for Montaverde within the blog posts.
+- [Adventure Clues](https://www.adventureclues.com/articles/36-unknown-places-in-the-world-that-will-take-your-breath-away/) provided me with alot of information about nearly all the locations chosen and gave me some great content to use within the excerpts
+- [Adventurous Kate](https://www.adventurouskate.com/travel-resources/) for the extremely useful travelling tips used within my 'Travel Resources' section.
+
+### Media
+- [Freepik](https://www.freepik.es/search?format=search&last_filter=query&last_value=travel&query=travel) Here I got my [travel-suitcases.jpeg](static/images-readme/travel-suitcases.jpg) image.
+- [Pexels](https://www.pexels.com/photo/people-sitting-on-boat-2108832/) I used the [pexels-riverboat.jpg](static/images-readme/pexels-riverboat.jpg) image from this sit provided by a photographer named Streetwindy.
+- [Pexels](https://www.pexels.com/search/suitcase/) provided me with the [pexels-suitcase.jpg](static/images-readme/pexels-suitcase.jpg) image to use within the Resources section.
+- [Flash Packer Connect](https://www.flashpackerconnect.com/blog/visiting-cano-cristales-a-journey-to-colombias-most-colorful-river) provided me with the [cano-cristales-post.jpeg](static/images-readme/cano-cristales-post.jpeg).
