@@ -401,7 +401,7 @@ This site is deployed using Heroku and all the steps for a success deployment ar
 
 ## Credits
 
-### Code
+### Code and images
 
 - The original setup for this API was provided mainly with the guidance from the Moments Walkthrough project which help me grasp the necessary information I needed in order to then customize my models and experiment with features I wanted to add myself to make this my unique project.
 
