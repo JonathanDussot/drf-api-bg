@@ -11,13 +11,23 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
 + [BoardGamers Github (Frontend)](# "BoardGamers")
 + [Live Deployment](#live-deployment "Live Deployment")
 + [User Stories](#user-stories "User Stories")
-  + [Project User stories](#project "Project User stories")
+  + [Profile User stories](#profile "Profile User stories")
   + [Games User stories](#games "Games User stories")
   + [Reviews User stories](#reviews "Reviews User stories")
   + [Likes User stories](#likes "Likes User stories")
   + [Ratings User stories](#ratings "Ratings User stories")
-+ [](# "")
-  + [Colour Scheme](#colour-scheme "Colour Scheme")
++ [Models used and their datafields](#models-used-and-their-datafields "Models used and their datafields")
+  + [Profile Model](#profile-model "Profile Model")
+  + [Games Model](#games-model "Games Model")
+  + [Reviews Model](#reviews-model "Reviews Model")
+  + [Likes Model](#likes-model "Likes Model")
+  + [Ratings Model](#ratings-model "Ratings Model")
++ [CRUD Functionality](#crud-functionality "CRUD Functionality")
+  + [Profile Data](#profile-data "Profile Data")
+  + [Games Data](#games-data "Games Data")
+  + [Reviews Data](#reviews-data "Reviews Data")
+  + [Likes Data](#likes-data "Likes Data")
+  + [Ratings Data](#ratings-data "Ratings Data")
   + [Typography](#typography "Typography")
   + [Imagery](#imagery "Imagery")
 + [Features](#features "Features")
@@ -73,9 +83,9 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
 - [x] As a site admin I can edit a rating given.
 - [x] As a site admin I can delete a rating from the API
 
-## Models used and their datafields.
+## Models used and their datafields
 
-### Profile
+### Profile Model
 
 owner = models.OneToOneField(User, on_delete=models.CASCADE)<br>
 created_at = models.DateTimeField(auto_now_add=True)<br>
@@ -84,7 +94,7 @@ name = models.CharField(max_length=255, blank=True)<br>
 favourite_game = models.CharField(max_length=255, blank=True)<br>
 image = models.ImageField(upload_to='images/', default='../default_profile_yqtpvj')
 
-### Games
+### Games Model
 
 owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
 title = models.CharField(max_length=255)<br>
@@ -100,7 +110,7 @@ genre_filter = models.CharField(max_length=32, choices=genre_filter_choices, def
 created_at = models.DateTimeField(auto_now_add=True)<br>
 updated_at = models.DateTimeField(auto_now=True)
 
-### Reviews
+### Reviews Model
 
 owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
 game = models.ForeignKey(Game, on_delete=models.CASCADE)<br>
@@ -108,18 +118,38 @@ created_at = models.DateTimeField(auto_now_add=True)<br>
 updated_at = models.DateTimeField(auto_now=True)<br>
 content = models.TextField()
 
-### Likes
+### Likes Model
 
 owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
 game = models.ForeignKey(Game, related_name='likes', on_delete=models.CASCADE)<br>
 created_at = models.DateTimeField(auto_now_add=True)
 
-### Ratings
+### Ratings Model
 
 rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)],default=3,)<br>
 game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='ratings')<br>
 owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
 created_at = models.DateTimeField(auto_now_add=True)
+
+## CRUD Functionality
+
+- The following images show the full CRUD functionality given to each of the models in the API.
+
+### Profile Data
+![Profile Data CRUD](PENDING PHOTO)
+
+### Games Data
+![Games Data CRUD](PENDING PHOTO)
+
+### Reviews Data
+![Reviews Data CRUD](PENDING PHOTO)
+
+### Likes Data
+![Likes Data CRUD](PENDING PHOTO)
+
+### Ratings Data
+![Ratings Data CRUD](PENDING PHOTO)
+
 
 ### Site Goal:
 To create a community where various users can participate in sharing some of the most beautiful locations around the globe. We're also set on it being estalished as a top-quality comfort zone for travelers, whether traveling alone or as a family, so they can comfortably share and rely on experiences and tips given, such as the resources available.
@@ -593,3 +623,83 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 - [Pexels](https://www.pexels.com/photo/people-sitting-on-boat-2108832/) I used the [pexels-riverboat.jpg](static/images-readme/pexels-riverboat.jpg) image from this sit provided by a photographer named Streetwindy.
 - [Pexels](https://www.pexels.com/search/suitcase/) provided me with the [pexels-suitcase.jpg](static/images-readme/pexels-suitcase.jpg) image to use within the Resources section.
 - [Flash Packer Connect](https://www.flashpackerconnect.com/blog/visiting-cano-cristales-a-journey-to-colombias-most-colorful-river) provided me with the [cano-cristales-post.jpeg](static/images-readme/cano-cristales-post.jpeg).
+
+
+
+## Deployment
+
+### Heroku
+
+This site is deployed using Heroku and all the steps for a success deployment are on the following:
+
+1. Create a list of requirements in the requirements.txt file by using the command _pip3 freeze > requirements.txt_.
+2. Log in (or sign up) to Heroku.
+3. Click on the _New_ button and select _Create new app_.
+4. Give it a unique name and choose the region.
+5. Click the Settings tab, go to the _Config Vars_ section and click on the _Reveal Config Vars_ button.
+6. Add all variables from env.py to _ConfigVars_ of Heroku.
+7. Click the _Add_ button.
+8. Click the Deploy tab, go to the _Deployment method_ section, select _GitHub_ and confirm this selection by clicking on the _Connect to Github_ button.
+9. Search for the repository name on github and click the _Connect_ button.
+10. Add in the setting.py the Heroku app URL into ALLOWED HOSTS.
+11. Gather all static files of the project by using the command _python3 manage.py collectstatic_ in the terminal.
+12. Make sure that DEBUG=FALSE in settings.py.
+13. Create a _Procfile_ in the root directory and add web: gunicorn fv_api.wsgi.
+13. In Heroku enable the automatic deploy or manually deploy the code from the main branch.
+
+### Local deployment
+
+1. Generate an env.py file in the root directory of the project.
+2. Configure the environment variables within this file.
+3. Create a virtual environment, if neccessary.
+4. Install all required dependencies using _pip install_ command (into the .venv).
+5. Add dependencies to the requirements.txt file using _pip3 freeze > requirements.txt_ command.
+
+### Forking this GitHub repository
+1.  Log in to GitHub.
+2.  Navigate to the repository for this project by selecting [drf-api-bg](https://github.com/JonathanDussot/drf-api-bg)
+3. Click at the top of the repository on the **Fork** button on the right side
+
+### Clone this repository
+1. Log in to GitHub.
+2. Navigate to the repository for this project by selecting [drf-api-bg](https://github.com/JonathanDussot/drf-api-bg)
+3. In the top-right corner, click on the green *Code* button
+4. Copy the HTTPS URL in the tab *Local*
+5. Go to the code editor of your choice and open the terminal
+5. Type `git clone` and paste the URL you copied into your terminal
+6. Press the enter key
+
+### Cloudinary
+1. Navigate to [Cloudinary](https://cloudinary.com/)
+2. Sign up or log in to account
+3. Go to the dashboard
+4. Click on _Go to API Keys_ button
+5. Generate a new API Key
+6. Provide the API environment variable in format: *CLOUDINARY_URL=cloudinary://<your_api_key>:<your_api_secret>@dzzfvef0g* in _env.py_ and _Config Vars_
+7. Update settings.py
+
+### Create PostgreSQL using Code Institute Database Maker
+1. [CI Database Maker](https://dbs.ci-dbs.net/)
+2. Input your email address
+3. Paste the provided URL in as your DATABASE_URL value
+
+## Credits
+
+### Code
+
+- The original setup for this API was provided mainly with the guidance from the Moments Walkthrough project which help me grasp the necessary information I needed in order to then customize my models and experiment with features I wanted to add myself to make this my unique project.
+
+- The following websites were used as a source of knowledge: <br>
+  - [Google](www.google.com)
+  - [Stack Overflow](https://stackoverflow.com/)
+  - [W3C](https://www.w3.org/)
+  - [W3schools](https://www.w3schools.com/)
+  - [DevDocs](https://devdocs.io/)
+  - [Atlassian](https://www.atlassian.com/)
+  - [forum djangoproject](https://forum.djangoproject.com/)
+  - [Django](https://www.djangoproject.com/), [Django Rest Framework]((https://www.django-rest-framework.org/)), [Cloudinary](https://cloudinary.com/documentation)
+  - Slack Community
+
+### Acknowledgements
+
+- I would like to thank the tutors and my mentor at Code Institute for continuously offering me support throughout this journey and helping me to learn so much.
