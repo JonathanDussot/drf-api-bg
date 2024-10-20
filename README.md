@@ -151,212 +151,10 @@ created_at = models.DateTimeField(auto_now_add=True)
 ![Ratings Data CRUD](PENDING PHOTO)
 
 
-### Site Goal:
-To create a community where various users can participate in sharing some of the most beautiful locations around the globe. We're also set on it being estalished as a top-quality comfort zone for travelers, whether traveling alone or as a family, so they can comfortably share and rely on experiences and tips given, such as the resources available.
 
-### Audience:
-Practically anybody with an interest in gorgeous landscapes since it makes for an excellent informative site on places to travel to and what to see.  Some may also be keen travelers who travel frequently.  Also, it's ideal for someone just seeking advice on what services to use abroad.
-
-### Communication:
-users are provided with user-friendly features to get in contact with site owner or other potential bloggers/users within the posts.
-
-### Existing User Goals:
-The capability of viewing, commenting on, and sharing experiences constantly within the community of travelers registered. Also, the potential to create collaborations to either facilitate a trip or support in other ways.
-
-### New User Goals:
-To feel welcomed by several posts on beautiful imagery and scenery to be discovered throughout the website.
-
-### Future Goals:
-- To provide users with a GPS location of the location and it's proximite surroundings that can be taken advantage of.
-- Users and admin on the posts would be able to optionally provide specific recommendations in terms of hotel accomodations, or have the site provide default options based on the GPS location's proximity.
-- The option for other bloggers to create their own posts to be approved and shared among the community as opposed to just the site admin's travels & posts.
-- The ability to send out the monthly newsletter to subscribed user's emails with the newest experiences and possibly a contest with the chance to win a prize or souvenir.
-- A structure within the website to help users plan their flights and have a rough estimate of a necessary budget, which could eventually lead to a flight-purchasing website such as skyscanner. 
-
-## User Stories
-Not all stories have been implemented. Some have been left for future implementations as the site grows and expands.
-
-### Admin stories:
-#### As an admin:
-1. I can **create, read, update and delete posts** so that **I can manage my blog content**.
- - Story points: 4
-2. I can **enter the subscription section** so that **I can see a list of subscribed emails**.
- - Story points: 2
-3. I can **create and update the About page content** so that **it is available to view on the site.**.
- - Story points: 1
-4. I can **create draft posts** so that **I can finish writing the content later.**.
- - Story points: 2
-5. I can **approve or disapprove comments** so that **I can filter out objectionable comments.**.
- - Story points: 2
-6. I can **store collaboration requests** so that **I can read submitted forms.**.
- - Story points: 2
-
-### Site User stories:
-#### As a site user:
-1. I can **leave comments on a post** so that **I can be involved in the conversation.**.
- - Story points: 3
-2. I can **click on the Travel Resources section** so that **I can view the information provided**.
- - Story points: 1
-3. I can **modify or delete my comment on a post** so that **I can be involved in the conversation**.
- - Story points: 2
-4. I can **post a message to the Site Admin with my details** so that **I can propose an idea for collaboration.**.
- - Story points: 2
-5. I can **register an account** so that **I can comment on a post.**.
- - Story points: 3
-6. I can **view comments on an individual post** so that **I can read the conversation.**.
- - Story points: 2
-7. I can **can click on the about link** so that **I can read information about the site and site admin.**.
- - Story points: 1
-8. I can **click on a post** so that **I can read the full text.**.
- - Story points: 1
-9. I can **view a paginated list of posts** so that **I can select which post I want to view.**.
- - Story points: 3
-10. I can **enter my email** so that **I am subscribed to the newsletter service.**.
- - Story points: 3
-11. I can **update my email** so that **I am subscribed to the newsletter service with the correct email address.**.
- - Story points: 4
-12. I can **delete my email** so that **I am unsubscribed to the newsletter service.**.
- - Story points: 4
-
-## Design
-
-### Wireframes:
-
-#### Home Page: 
-
-![Home Page](static/images-readme/wireframe-homepage.png)
-
-#### Post Details Page:
-
-![Post Details Page](static/images-readme/wireframe-postdetail-page.png)
-
-#### About Page:
-
-![About Page](static/images-readme/wireframe-aboutpage.png)
-
-#### Resources Page:
-
-![Resources Page](static/images-readme/wireframe-resourcespage.png)
-
-#### Newsletter Page:
-
-![Newsletter Page](static/images-readme/wireframe-newsletter-page.png)
-
-### Database Schema
-
-![Database Schema](static/images-readme/hidden-gems-erd-diagram.png)
-
-### Colour Scheme:
-
-![Colour Palette](static/images-readme/colour-scheme.png)
-
-- #fff - is typically used as my background colour and also text colour in the case of there being a dark-coloured background.
-- #212529 - is the text colour used throughout the webpage when there is a light-coloured background.
-- #188181 - to resemble some familiarity with the blue colour within the logo, a different shade was actually used to help with the colour contrast issues.
-- #F06814 - to resemble the orange colour within the logo and give a more familiar feeling throughout the webpage.
-- #445261 - is used in the mastheads within the post details html pages to contrast the image colours.
-
-### Typography:
-All fonts were obtained from the Google Fonts library. I chose the following fonts for the page:
-1. Poppins: used for titles and Navbar elements such as the nav-items and text-muted phrase.
-2. Open Sans: Typically used for the body text of the webpage.
-
-### Imagery:
-- All images have been named in the credit section, most of which are photos of places, whereas the others related to travel are from free photo sites.
-
-## Features
-
-### Existing Features:
-
-#### Home Page:
-
-![Home page](static/images-readme/features-homepage.png)
-
-#### Navigation Bar:
-
-##### Desktop:
-
-![Navbar desktop](static/images-readme/features-desktop-navbar.png)
-
-##### Mobile:
-
-![Navbar mobile](static/images-readme/features-mobile-navbar.png)
-
-#### Paginated features:
-- Leads user to next/ previous page(s) assuming there's more posts than the page's limit.
-![paginated](static/images-readme/features-paginated.png)
-
-#### About Page:
-
-![About page](static/images-readme/features-aboutpage.png)
-
-#### Collaboration Form on About Page:
-
-![Collaboration form](static/images-readme/features-collaboration-request.png)
-
-#### Travel Resources Page:
-
-![Resources Page](static/images-readme/features-resourcespage.png)
-
-#### Post Details Page:
-
-![Post Details Page](static/images-readme/features-postdetails.png)
-
-#### Like button feature:
-
-![Like button feature](static/images-readme/features-like-system.png)
-
-#### Post Details Comment Section:
-
-![Post Details Comment Section](static/images-readme/features-comment-system.png)
-
-#### Log in, Log out & Sign up:
-
-##### Login:
-
-![Login](static/images-readme/features-signin-page.png)
-
-##### Logout:
-
-![Logout](static/images-readme/features-signout-page.png)
-
-##### Sign-up:
-
-![Sign-up](static/images-readme/features-signup-page.png)
-
-#### Footer:
-
-![Footer](static/images-readme/features-footer.png)
-
-### C.R.U.D:
-
-#### Newsletter Subscription Page - Create:
-- This gives users the option to sign up for the newsletter by entering their email before being alerted on the success of their subsription.
-- It is only visible to users who are signed in.
-![CRUD - create button](static/images-readme/features-subscription-page.png)
-
-#### Newsletter Subscription Page - Read:
-- User is alerted as to the successful subsription...
-![CRUD - read](static/images-readme/features-subscription-alert.png)
-- ...before being led to the email-list page with a display of the email(s) they have subscribed on their account alone.
-![CRUD - read(2)](static/images-readme/features-editsubscription-page.png)
-
-#### Newsletter Subscription Page - Update:
-- The user is given the option to edit the email address on their account alone.
-![CRUD - update](static/images-readme/features-updatesubscription-page.png)
-
-#### Newsletter Subscription Page - Delete:
-- The user is given the option to delete an email(s) and unscubscribe on their account alone.
-![CRUD - delete](static/images-readme/features-deletesubscription-page.png)
 
 ### Features Left to Implement
-- System to send out newsletters.
-- newsletter contests.
-- flight reservation section.
-- GPS map showing location.
-- Hotels/ Other accomodation around the location using GPS.
-- Password reset.
-- Social media sign-in.
+- This can be found within the *BoardGamers* [README.md file](PENDING)
 
 ## Testing
 
@@ -500,25 +298,20 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 
 ## Technologies Used
 ### Main Languages Used
-- HTML5
-- CSS3
-- Javascript
 - Python
-- Django
-- SQL - Postgres
 
 ### Frameworks, Libraries & Programs Used
 - [Google Fonts](https://fonts.google.com/) - for the font families: 
-- [Font Awesome](fontawesome.com) - for the social network icons.
-- [GitPod](https://www.gitpod.io/) - for creating html files, css stylesheet and python files.
+- [Font Awesome](fontawesome.com) - for the page icons.
+- [GitPod](https://www.gitpod.io/) - for creating python files.
 - [GitHub](https://github.com/) - to store my repository for submission.
 - Google Dev tools - to test and fix issues detected.
-- [Pexels](https://www.pexels.com/) to use free images for site.
-- [Free Pik](https://www.freepik.es/) to use free images for site.
+- [Heroku](https://id.heroku.com/login) - for live deployments.
+- [Pexels](https://www.pexels.com/) to use free images for signup/signin image.
+- [iconos8](https://iconos8.es/) to get favicon for my site.
 - [Balsamiq](https://balsamiq.com/) - for the wireframe mockups of my webpage.
 - [Am I Responsive?](https://ui.dev/amiresponsive) - to ensure the webpage displayed well on all devices.
 - [Tiny PNG](https://tinypng.com/) to compress images.
-- [DrawSQL](https://drawsql.app/) - for ERD mockups
 - [FreeLogoDesign](https://app.freelogodesign.org/)
 - [Colormind.io](http://colormind.io/) to generate color palette used. 
 - [cdnjs](https://cdnjs.com/libraries/bootstrap) for bootstrap.
@@ -526,105 +319,28 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 - Bootstrap
 
 ### Installed Packages:
-- asgiref==3.8.1
-- cloudinary==1.36.0
-- crispy-bootstrap5==0.7
+- asgiref==3.3.4
+- cloudinary==1.25.0
+- cryptography==3.4.8
 - dj-database-url==0.5.0
-- dj3-cloudinary-storage==0.0.6
-- Django==5.0.7
-- django-allauth==0.57.2
-- django-crispy-forms==2.2
-- django-summernote==0.8.20.0
+- dj-rest-auth==2.1.9
+- Django==3.2.4
+- django-allauth==0.50.0
+- django-cloudinary-storage==0.3.0
+- django-cors-headers==3.7.0
+- django-filter==2.4.0
+- djangorestframework==3.12.4
+- djangorestframework-simplejwt==4.7.2
 - gunicorn==20.1.0
-- oauthlib==3.2.2
+- oauthlib==3.1.1
+- Pillow==8.2.0
 - psycopg2==2.9.9
-- PyJWT==2.8.0
+- PyJWT==2.1.0
 - python3-openid==3.2.0
-- requests-oauthlib==2.0.0
-- sqlparse==0.5.0
-- urllib3==1.26.19
-- whitenoise==5.3.0
-
-## Deployment
-The site was deployed to Heroku. The steps to deploy are as follows:
-- Install Django & Gunicorn:
-```pip3 install Django~=4.2.1```
-- a django project was created using:
-```django-admin startproject gems .```
-- the blog app was then created with:
-```python3 manage.py startapp blog```
-- Install gunicorn to enable deployment to Heroku:
-```pip3 install gunicorn~=20.1```
-- Creating the requirements.txt file with the following command:
-```pip3 freeze --local > requirements.txt```
-- Install Django summernote:
-```pip3 install django-summernote~=0.8.20.0```
-- Install whitenoise for Heroku to serve its own static files:
-```pip3 install whitenoise~=5.3.0```
-- Add user authentication with the following:
-```pip3 install django-allauth~=0.57.0```
-- Install Cloudinary:
-```pip3 install django-crispy-forms~=2.0 crispy-bootstrap5~=0.7```
-- Install Cloudinary:
-```pip3 install cloudinary~=1.36.0 dj3-cloudinary-storage~=0.0.6 urllib3~=1.26.15```
-- Install Cloudinary:
-```pip3 install dj3-cloudinary-storage```
-- Install Cloudinary:
-```pip3 install dj3-cloudinary-storage```
-- which was then added to the settings.py file within our project directory.
-- the changes were then migrated using:
-```python3 manage.py makemigrations``` and ```python3 manage.py migrate```
-- Collectstatic command for all static files to be deployed without issue:
-```python3 manage.py collectstatic```
-- navigated to [Heroku](www.heroku.com) & created a new app called hidden-gem-blog.
-- added the Heroku Postgres database to the Resources tab.
-- navigated to the Settings Tab, to add the following key/value pairs to the configvars:
-1. key: SECRET_KEY | value: randomkey
-2. key: PORT | value: 8000
-3. key: CLOUDINARY_URL | value: API environment variable
-4. key: DATABASE_URL | value: value supplied by Heroku
-- added the DATABASE_URL, SECRET_KEY & CLOUDINARY_URL to the env.py file
-- added the DATABASE_URL, SECRET_KEY & CLOUDINARY_URL to the settings.py file
-- add an import os statement for the env.py file.
-- added Heroku to the ALLOWED_HOSTS in settings.py
-- created the Procfile
-- pushed the project to Github
-- connected my github account to Heroku through the Deploy tab
-- connected my github project repository, and then clicked on the "Deploy" button
-- The live link for "Hidden Gems" can be found [HERE](https://hidden-gem-blog-d08378ae9ea1.herokuapp.com/)
-
-## Credits
-
-### Content
-- “I think therefore I blog” walkthrough: Assisted me hugelyfrom the start with initial steps such as commands, adding apps, designing models and the many installed apps and their purposes.  Permitted me to add on to them and expand what I already had.
-- Slack community for the vast amount of support and information available to clear doubts and help with potential bugs.
-- Tutor Support for their constant support with some of the questions or issues I had and the patience to make everything so clear and such a pleasant learning experience.
-- CI for providing us with an exclusive Gitpod which helped tremendously considering the amount of hours dedicated to putting this project together, and hopefully many more for the future implementations and improvements to be made.
-- **Location content**:
-- [Royal Alaska Movers](https://www.royalalaskanmovers.com/north-pole-alaska-visitors-guide/) provided me with the content for Santa Claus's house within the blog posts.
-- [Komoot](https://www.komoot.com/guide/1812719/attractions-in-fairbanks-north-star-borough) provided me with the content for the northern lights within the blog posts.
-- [The Culture Trip](https://theculturetrip.com/south-america/peru/articles/how-to-visit-the-nazca-lines-in-peru) provided me with the content for the Nazca Lines within the blog posts.
-- [Osprey Expeditions](https://ospreyexpeditions.com/interesting-facts-about-cano-cristales/) provided me with the content for Cano Cristales within the blog posts.
-- [Forbes](https://www.forbes.com/sites/trevornace/2016/03/02/rainbow-mountains-china-earths-paint-palette/) provided me with the content for the Rainbow mountains in China within the blog posts.
-- [Atlas Obscura](https://www.atlasobscura.com/places/santa-maria-dellisola-monastery) provided me with the content for the Monastery of Santa Maria Tropea within the blog posts.
-- [Great Blue Hole](https://greatbluehole.net/) provided me with the content for the Great Blue Hole within the blog posts.
-- [Jrailpass](https://www.jrailpass.com/blog/ashikaga-flower-park#:~:text=The%20Ashikaga%20Flower%20Park%20first,monument%20by%20the%20Tochigi%20Prefecture) provided me with the content for Ashikaga Flower Park within the blog posts.
-- [Neuschwanstein Tickets](https://neuschwansteintickets.com/) provided me with the content for Neuschwanstein Castle within the blog posts.
-- [Waitomo](https://www.waitomo.com/glowworms-and-caves/waitomo-glowworm-caves) provided me with the content for the Glow-worm Caves within the blog posts.
-- [Indonesia Travel](https://www.indonesia.travel/gb/en/destinations/bali-nusa-tenggara/flores/lake-kelimutu.html) provided me with the content for the Kelimutu lakes within the blog posts.
-- [Inside Kyoto](https://www.insidekyoto.com/arashiyama-bamboo-grove) provided me with the content for the Bamboo Groves within the blog posts.
-- [https://ukraine.ua](https://ukraine.ua/cities-places/tunnel-of-love/) provided me with the content for the tunnel of love within the blog posts.
-- [Go Visit Costa Rica](https://www.govisitcostarica.com/region/city.asp?cID=69) provided me with the content for Montaverde within the blog posts.
-- [Adventure Clues](https://www.adventureclues.com/articles/36-unknown-places-in-the-world-that-will-take-your-breath-away/) provided me with alot of information about nearly all the locations chosen and gave me some great content to use within the excerpts
-- [Adventurous Kate](https://www.adventurouskate.com/travel-resources/) for the extremely useful travelling tips used within my 'Travel Resources' section.
-
-### Media
-- [Freepik](https://www.freepik.es/search?format=search&last_filter=query&last_value=travel&query=travel) Here I got my [travel-suitcases.jpeg](static/images-readme/travel-suitcases.jpg) image.
-- [Pexels](https://www.pexels.com/photo/people-sitting-on-boat-2108832/) I used the [pexels-riverboat.jpg](static/images-readme/pexels-riverboat.jpg) image from this sit provided by a photographer named Streetwindy.
-- [Pexels](https://www.pexels.com/search/suitcase/) provided me with the [pexels-suitcase.jpg](static/images-readme/pexels-suitcase.jpg) image to use within the Resources section.
-- [Flash Packer Connect](https://www.flashpackerconnect.com/blog/visiting-cano-cristales-a-journey-to-colombias-most-colorful-river) provided me with the [cano-cristales-post.jpeg](static/images-readme/cano-cristales-post.jpeg).
-
-
+- pytz==2021.1
+- requests-oauthlib==1.3.0
+- sqlparse==0.4.1
+- urllib3==1.26.18
 
 ## Deployment
 
