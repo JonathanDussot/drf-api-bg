@@ -22,27 +22,25 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
   + [Reviews Model](#reviews-model "Reviews Model")
   + [Likes Model](#likes-model "Likes Model")
   + [Ratings Model](#ratings-model "Ratings Model")
-+ [CRUD Functionality](#crud-functionality "CRUD Functionality")
-  + [Profile Data](#profile-data "Profile Data")
-  + [Games Data](#games-data "Games Data")
-  + [Reviews Data](#reviews-data "Reviews Data")
-  + [Likes Data](#likes-data "Likes Data")
-  + [Ratings Data](#ratings-data "Ratings Data")
-  + [Typography](#typography "Typography")
-  + [Imagery](#imagery "Imagery")
-+ [Features](#features "Features")
-  + [Existing Features](#existing-features "Existing Features")
-  + [C.R.U.D](#crud "C.R.U.D")
++ [Features Left to Implement](#features-left-to-implement "Features Left to Implement")
 + [Testing](#testing "Testing")
   + [Validator Testing](#validator-testing "Validator Testing")
-  + [Unfixed Bugs](#unfixed-bugs "Unfixed Bugs")
+  + [CRUD Functionality Testing](#crud-functionality-testing "CRUD Functionality Testing")
+  + [Bug Testing](#bug-testing "Bug Testing")
 + [Technologies Used](#technologies-used "Technologies Used")
   + [Main Languages Used](#main-languages-used "Main Languages Used")
-  + [Frameworks, Libraries & Programs Used](#frameworks-libraries-programs-used "Frameworks, Libraries & Programs Used")
+  + [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used "Frameworks, Libraries & Programs Used")
+  + [Installed Packages](#installed-packages "Installed Packages")
 + [Deployment](#deployment "Deployment")
+  + [Heroku](#heroku "Heroku")
+  + [Local Deployment](#local-deployment "Local Deployment")
+  + [Forking this GitHub repository](#forking-this-github-repository "Forking this GitHub repository")
+  + [Clone this repository](#clone-this-repository "Clone this repository")
+  + [Cloudinary](#cloudinary "Cloudinary")
+  + [PostgreSQL](#create-postgresql-using-code-institute-database-maker "PostgreSQL")
 + [Credits](#credits "Credits")
-  + [Content](#content "Content")
-  + [Media](#media "Media")
+  + [Code and Images](#code-and-images "Code and Images")
+  + [Acknowledgements](#acknowledgements "Acknowledgements")
 
 ## User Stories
 - Here is a list of all my user stories which can be found in my backend [project](https://github.com/users/JonathanDussot/projects/5)which employs the Agile methodology approach in an organized manner, each with their labels as per MoSCoW prioritization of tasks. ![kanbanboard](images/kanban-board.png)
@@ -131,170 +129,75 @@ game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='ratings')
 owner = models.ForeignKey(User, on_delete=models.CASCADE)<br>
 created_at = models.DateTimeField(auto_now_add=True)
 
-## CRUD Functionality
-
-- The following images show the full CRUD functionality given to each of the models in the API.
-
-### Profile Data
-![Profile Data CRUD](PENDING PHOTO)
-
-### Games Data
-![Games Data CRUD](PENDING PHOTO)
-
-### Reviews Data
-![Reviews Data CRUD](PENDING PHOTO)
-
-### Likes Data
-![Likes Data CRUD](PENDING PHOTO)
-
-### Ratings Data
-![Ratings Data CRUD](PENDING PHOTO)
-
-
-
-
-### Features Left to Implement
-- This can be found within the *BoardGamers* [README.md file](PENDING)
+## Features Left to Implement
+- This can be found within the *BoardGamers* [README.md file](https://github.com/JonathanDussot/boardgamers/blob/main/README.md)
 
 ## Testing
 
 ### Validator Testing
 | **TEST** | **ACTION** | **EXPECTATION** | **RESULT** |
 | ----------------------------- | ----------------------- | --------------------------- | ---------- |
-| gems - settings.py | PEP8 validator | [No issues found](static/images-readme/pep8-validator-python.png) | ✅ |
-| gems - urls.py | PEP8 validator | No issues found | ✅ |
-| blog app - forms.py | PEP8 validator | No issues found | ✅ |
-| blog app - models.py | PEP8 validator | No issues found | ✅ |
-| blog app - views.py | PEP8 validator | No issues found | ✅ |
-| blog app - urls.py | PEP8 validator | No issues found | ✅ |
-| blog app - admin.py | PEP8 validator | No issues found | ✅ |
-| about app - forms.py | PEP8 validator | No issues found | ✅ |
-| about app - models.py | PEP8 validator | No issues found | ✅ |
-| about app - views.py | PEP8 validator | No issues found | ✅ |
-| about app - urls.py | PEP8 validator | No issues found | ✅ |
-| about app - admin.py | PEP8 validator | No issues found | ✅ |
-| newsletter app - forms.py | PEP8 validator | No issues found | ✅ |
-| newsletter app - models.py | PEP8 validator | No issues found | ✅ |
-| newsletter app - views.py | PEP8 validator | No issues found | ✅ |
-| newsletter app - urls.py | PEP8 validator | No issues found | ✅ |
-| newsletter app - admin.py | PEP8 validator | No issues found | ✅ |
-| resources app - forms.py | PEP8 validator | No issues found | ✅ |
-| resources app - models.py | PEP8 validator | No issues found | ✅ |
-| resources app - views.py | PEP8 validator | No issues found | ✅ |
-| resources app - urls.py | PEP8 validator | No issues found | ✅ |
-| resources app - admin.py | PEP8 validator | No issues found | ✅ |
-| style.css | [W3C - Jigsaw](https://jigsaw.w3.org/css-validator/) validator | [No issues found](static/images-readme/w3c-validator-css.png) | ✅ |
-| Home page - html | [W3C](https://validator.w3.org/) validator - source code | [No issues found](static/images-readme/w3c-validator-html.png) | ✅ |
-| About page - html | W3C validator - source code | No issues found | ✅ |
-| Post Details page - html | W3C validator - source code | No issues found | ✅ |
-| Resources page - html | W3C validator - source code | No issues found | ✅ |
-| Newsletter page - html | W3C validator - source code | No issues found | ✅ |
-| Sign-in page - html | W3C validator - source code | No issues found | ✅ |
-| Home page - html | lighthouse | [Acceptable scores](static/images-readme/lighthouse.png) | ✅ |
-| About page - html | lighthouse | Acceptable scores | ✅ |
-| Post-Details page - html | lighthouse | Acceptable scores | ✅ |
-| Resources page - html | lighthouse | Acceptable scores | ✅ |
-| Newsletter page - html | lighthouse | Acceptable scores | ✅ |
-| Sign-in page - html | lighthouse | Acceptable scores | ✅ |
-| WAVE results | WAVE | [Acceptable scores](static/images-readme/wave.png) | ✅ |
-| Microsoft Edge browser | Launch site | Site opens without issue | ✅ |
-| Google Chrome browser | Launch site | Site opens without issue | ✅ |
+| drf_api_bg - settings.py | PEP8 validator | [No issues found](images/pep8validation.png) | ✅ |
+| drf_api_bg - urls.py | PEP8 validator | No issues found | ✅ |
+| games app - forms.py | PEP8 validator | No issues found | ✅ |
+| games app - models.py | PEP8 validator | No issues found | ✅ |
+| games app - views.py | PEP8 validator | No issues found | ✅ |
+| games app - urls.py | PEP8 validator | No issues found | ✅ |
+| games app - admin.py | PEP8 validator | No issues found | ✅ |
+| likes app - forms.py | PEP8 validator | No issues found | ✅ |
+| likes app - models.py | PEP8 validator | No issues found | ✅ |
+| likes app - views.py | PEP8 validator | No issues found | ✅ |
+| likes app - urls.py | PEP8 validator | No issues found | ✅ |
+| likes app - admin.py | PEP8 validator | No issues found | ✅ |
+| profiles app - forms.py | PEP8 validator | No issues found | ✅ |
+| profiles app - models.py | PEP8 validator | No issues found | ✅ |
+| profiles app - views.py | PEP8 validator | No issues found | ✅ |
+| profiles app - urls.py | PEP8 validator | No issues found | ✅ |
+| profiles app - admin.py | PEP8 validator | No issues found | ✅ |
+| ratings app - forms.py | PEP8 validator | No issues found | ✅ |
+| ratings app - models.py | PEP8 validator | No issues found | ✅ |
+| ratings app - views.py | PEP8 validator | No issues found | ✅ |
+| ratings app - urls.py | PEP8 validator | No issues found | ✅ |
+| ratings app - admin.py | PEP8 validator | No issues found | ✅ |
+| reviews app - forms.py | PEP8 validator | No issues found | ✅ |
+| reviews app - models.py | PEP8 validator | No issues found | ✅ |
+| reviews app - views.py | PEP8 validator | No issues found | ✅ |
+| reviews app - urls.py | PEP8 validator | No issues found | ✅ |
+| reviews app - admin.py | PEP8 validator | No issues found | ✅ |
 
-### Responsiveness testing
+### CRUD Functionality Testing
 
-| **TEST**                      | **ACTION**              | **EXPECTATION**             | **RESULT** |
-| ----------------------------- | ----------------------- | --------------------------- | ---------- |
-| Home page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Home page - responsiveness    | Size site up to 1920px  | all elements stay on screen | ✅         |
-| About page - responsiveness   | Size site down to 320px | all elements stay on screen | ✅         |
-| About page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
-| Post-Details page - responsiveness  | Size site down to 320px | all elements stay on screen | ✅         |
-| Post-Details page - responsiveness  | Size site up to 1920px  | all elements stay on screen | ✅         |
-| Resources page - responsiveness    | Size site down to 320px | all elements stay on screen | ✅         |
-| Resources page - responsiveness    | Size site up to 1920px  | all elements stay on screen | ✅         |
-| Newsletter page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
-| Newsletter page - responsiveness   | Size site up to 1920px  | all elements stay on screen | ✅         |
-| Sign-in page - responsiveness | Size site down to 320px | all elements stay on screen | ✅         |
-| Sign-in page - responsiveness | Size site up to 1920px  | all elements stay on screen | ✅         |
-
-### C.R.U.D. testing
+- The following images show the full CRUD functionality given to each of the models in the API.
 
 | **TEST**          | **ACTION**             | **EXPECTATION**          | **RESULT** |
 | ----------------- | ---------------------- | ------------------------ | ---------- |
-| Newsletter subscription - Create     | Add new instance to DB | Instance created         | ✅         |
-| Newsletter subscription - Read       | Retrieve all instances | Instances visible in UI  | ✅         |
-| Newsletter subscription - Update     | Modify an instance     | Mods saved & visible     | ✅         |
-| Newsletter subscription - Delete     | Delete an instance     | Instance removed from UI | ✅         |
-| Comments - Create | Add new instance to DB | Instance created         | ✅         |
-| Comments - Read   | Retrieve all instances | Instances visible in UI  | ✅         |
-| Comments - Update | Add new instance to DB | Mods saved & visible     | ✅         |
-| Comments - Delete   | Retrieve all instances | Instance removed from UI | ✅         |
+| Profiles - Create     | Add new instance to DB | Instance created         | ✅         |
+| Profiles - Read       | Retrieve all instances | Instances visible in UI  | ✅         |
+| Profiles - Update     | Modify an instance     | Mods saved & visible     | ✅         |
+| Profiles - Delete     | Delete an instance     | Instance removed from UI | ✅         |
+| Games - Create | Add new instance to DB | Instance created         | ✅         |
+| Games - Read   | Retrieve all instances | Instances visible in UI  | ✅         |
+| Games - Update | Add new instance to DB | Mods saved & visible     | ✅         |
+| Games - Delete   | Retrieve all instances | Instance removed from UI | ✅         |
+| Reviews - Create     | Add new instance to DB | Instance created         | ✅         |
+| Reviews - Read       | Retrieve all instances | Instances visible in UI  | ✅         |
+| Reviews - Update     | Modify an instance     | Mods saved & visible     | ✅         |
+| Reviews - Delete     | Delete an instance     | Instance removed from UI | ✅         |
+| Ratings - Create     | Add new instance to DB | Instance created         | ✅         |
+| Ratings - Update     | Modify an instance     | Mods saved & visible     | ✅         |
+| Ratings - Delete     | Delete an instance     | Instance removed from UI | ✅         |
 | Like - Create | Add new instance to DB | Instance created         | ✅         |
 | Like - Delete | Delete an instance     | Instance removed from UI | ✅         |
 
-### FEATURES
-
-| **TEST**                      | **ACTION**             | **EXPECTATION**                                           | **RESULT** |
-| ----------------------------- | ---------------------- | --------------------------------------------------------- | ---------- |
-| Navigation bar                | Click on nav link      | user routed to correct page                               | ✅         |
-| Footer links                  | Click on footer links  | user routed to new browser tab                            | ✅         |
-| Like button                   | Click "like"           | Post liked/unliked accordingly                            | ✅         |
-| Comment section                   | Written empty message           | does not submit, prompts to write a message                            | ✅         |
-| Comment section                   | Write message and submit           | user informed on pending approval                            | ✅         |
-| Edit button                   | Click edit button      | user allowed to edit comment only if previously approved                             | ✅         |
-| Delete button                 | Click delete button    | user allowed to delete comment only if previously approved                                | ✅         |
-| Collaboration form                | Submit form    | user alerted on successful form                                | ✅         |
-| External links in Resources                | Click link             | User routed to appropriate webpage                           | ✅         |
-| Subscription                | enter invalid email             | User prompted to write a valid email                           | ✅         |
-| Subscription CRUD buttons                | Click buttons            | User routed to appropriate page and UI updated                    | ✅         |
-| Login                         | User logs in           | UI updates & user is logged in                            | ✅         |
-| Sign up                       | User signs up          | new account created for the user                          | ✅         |
-| Logout                        | User clicks logout     | UI updates, user is logged out, user cannot create a post | ✅         |
-
 ### BUG TESTING:
-1. Heroku logs--tail error when deploying to Heroku:
- - Added correctly-written web: gunicorn gems.wsgi to ProcFile to link it correctly.
+1. Getting OSSL error on ther terminal, even after entering *npm install react-scripts@latest*:
+ - Audit command had changed versions, needed to correct and reinstall.
 
-2. 'unexpected chunk number 1 (expected 0)' error:
- - This was caused be corrupted Data upon using loaddata with json.file according to Tutor Support.
- - Uncommented sqlite database and commented out external database to temporarily work on project before eventually providing a solution (mentioned in bug #3)
+2. Error in terminal with setup tools.
+ - Django 5.1 was causing issues and generating this message, needed to install 4.2 to fix this issue.
 
-3. Opening new external Database:
- - Did pip install and pip freeze with all requirements, created env.py file, added new DB URL and secret key, collectstatic, updated CSRF, did makemigrations and migrate command and yet page would not load correctly.
- - The cloudinary URL was missing within the env.py, this allowed the page to load correctly.
-
-4. CSS styles would not load:
- - Upon using terminal command to copy staticfiles into a template folder, accidently created and nested everything within an additional templates folder so url path did not connect.
- - Moved everything out to the correct template folder and css styles were loading correctly.
-
-5. Admin interface content lacked RichText Editor for content fields in resources app:
- - summernote_fields was not correctly linked to content containers within the admin.py file.
-
-6. Likes generated an error:
- - within the blog's models.py the model's related name for the like button clashed with the comment section, I changed the name so code could correctly distinguish model and this fixed the bug.
-
-7. Validator error message <o:p>:
- - This was due to my population of the content fields having used my microsoft word to draft the tet before adding them to the admin interface, could not be seen in my code.
- - Manually accessed and edited code from Admin interface and deleted the tags.
-
-8. Page would break when screen size was below 768px and only provide images:
- - Deleted 'flex: no-wrap' to fix this issue and correctly display text with the images so users can access post details for each post.
-
-9. Editing a comment while awaiting approval:
- - Page would crash is user were to click on the edit button before comment had been approved.
- - Fixed the issue by removing the edit button for comments awaiting approval.
-
-10. Navbar overflow:
- - Navbar displayed overflow off page between 1150px and 990px on all pages.
- - Reduced the logo size, nav-link size and text-muted size so elements would not cause navbar to overflow before collapsing as media response styles take effect.
-
-11. Like button with a reverse path error:
- - Upon correcting some of the hyphens and underscores, the blog's urls.py path had the correct pattern, but the views.py file still had **'post-detail'** instead of **post_detail** within the reverse function call.
-
-### Unfixed Bugs
-1. Sign up form - HTML Validator errors:
-- Upon validating, I noticed [4 errors with tags](static/images-readme/signup-html-errors.png) which were nowhere to be found within my code.
-- With help from Tutor Support, we determined this was from Django's Allauth's error and that I could do nothing to fix it from my end.
+3. App was not logging out user properly.
+ - Logout route had not been set up correct, bug fixed.
 
 ## Technologies Used
 ### Main Languages Used
