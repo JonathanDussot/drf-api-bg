@@ -6,6 +6,9 @@ from ratings.models import Rating
 
 
 class GameSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Game model
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -42,17 +45,15 @@ class GameSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-        # Count the number of ratings for this game
     def get_rating_count(self, obj):
         return Rating.objects.filter(game=obj).count()
 
     def get_average_rating(self, obj):
-        # Get all ratings, calculate the average
         ratings = Rating.objects.filter(game=obj)
         if ratings.exists():
             average = ratings.aggregate(Avg('rating'))['rating__avg']
-            return round(average, 1)  # Round to one decimal place
-        return None  # Return 0 if no ratings
+            return round(average, 1)
+        return None
 
     class Meta:
         model = Game
