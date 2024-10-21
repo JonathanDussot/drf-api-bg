@@ -12,6 +12,7 @@ def root_route(request):
         "message": "Welcome to my drf API! Should be able to see this!"
     })
 
+
 @api_view(['POST'])
 def logout_route(request):
     response = Response()

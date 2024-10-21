@@ -10,14 +10,14 @@ class Game(models.Model):
     Default image set so that we can always reference image.url.
     """
     genre_filter_choices = [
-    ('none', 'none'),
-    ('family', 'Family Game'),
-    ('dexterity', 'Dexterity Game'),
-    ('party', 'Party Game'),
-    ('abstract', 'Abstract Game'),
-    ('thematic', 'Thematic Game'),
-    ('eurogame', 'Eurogame'),
-    ('wargame', 'Wargame'),
+        ('none', 'none'),
+        ('family', 'Family Game'),
+        ('dexterity', 'Dexterity Game'),
+        ('party', 'Party Game'),
+        ('abstract', 'Abstract Game'),
+        ('thematic', 'Thematic Game'),
+        ('eurogame', 'Eurogame'),
+        ('wargame', 'Wargame'),
     ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
@@ -40,7 +40,7 @@ class Game(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         ordering = ['-created_at']
 
@@ -49,7 +49,9 @@ class Game(models.Model):
 
     def clean(self):
         if self.min_players > self.max_players:
-            raise ValidationError('Minimum players cannot be greater than maximum players.')
+            raise ValidationError(
+                'Minimum players cannot be greater than maximum players.'
+            )
 
     def __str__(self):
         return f'{self.min_players}-{self.max_players} players'
