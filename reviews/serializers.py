@@ -4,6 +4,9 @@ from .models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Review Model with specific fields to include
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
