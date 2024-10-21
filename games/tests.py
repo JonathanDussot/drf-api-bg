@@ -5,6 +5,10 @@ from rest_framework.test import APITestCase
 
 
 class GameListViewTests(APITestCase):
+    """
+    To test functionality with the Game model; listing games, logged in user
+    can create games, and that a logged out user can't
+    """
     def setUp(self):
         User.objects.create_user(username='adam', password='pass')
 
@@ -29,6 +33,9 @@ class GameListViewTests(APITestCase):
 
 
 class GameDetailViewTests(APITestCase):
+    """
+    To test each user can modify their own posts and noone else's
+    """
     def setUp(self):
         adam = User.objects.create_user(username='adam', password='pass')
         brian = User.objects.create_user(username='brian', password='pass')
