@@ -43,7 +43,7 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
   + [Acknowledgements](#acknowledgements "Acknowledgements")
 
 ## User Stories
-- Here is a list of all my user stories which can be found in my backend [project](https://github.com/users/JonathanDussot/projects/5)which employs the Agile methodology approach in an organized manner, each with their labels as per MoSCoW prioritization of tasks. ![kanbanboard](images/kanban-board.png)
+- Here is a list of all my user stories which can be found in my backend [project](https://github.com/users/JonathanDussot/projects/5) which employs the Agile methodology approach in an organized manner, each with their labels as per MoSCoW prioritization of tasks. ![kanbanboard](images/kanban-board.png)
 
 ### Profile
 
