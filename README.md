@@ -83,6 +83,12 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
 
 ## Models used and their datafields
 
+### ERD Diagram
+
+Here this image shows the relationships between my models.
+
+![ERD Diagram](images/my_project_visualized.png)
+
 ### Profile Model
 
 owner = models.OneToOneField(User, on_delete=models.CASCADE)<br>
