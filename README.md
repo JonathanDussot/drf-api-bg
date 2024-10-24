@@ -17,6 +17,7 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
   + [Likes User stories](#likes "Likes User stories")
   + [Ratings User stories](#ratings "Ratings User stories")
 + [Models used and their datafields](#models-used-and-their-datafields "Models used and their datafields")
+  + [ERD Diagram](#erd-diagram "ERD Diagram")
   + [Profile Model](#profile-model "Profile Model")
   + [Games Model](#games-model "Games Model")
   + [Reviews Model](#reviews-model "Reviews Model")
@@ -47,39 +48,39 @@ You can check the Github for *BoardGamers* by clicking [here](https://github.com
 
 ### Profile
 
-- [x] As a site/admin I can view a list of all created profiles. (Sprint 1)
-- [x] As a site admin I can login and logout so that I can create, edit or delete data. (Sprint 1)
-- [x] As a site admin I can enter a profile so that I can see all profile details. (Sprint 1)
-- [x] As a site admin I can edit and update personal information. (Sprint 2)
-- [x] As a site admin I can Delete a profile from the API. (Sprint 2)
+- [x] As a site/admin I can view a list of all created profiles. **(Sprint 1)**
+- [x] As a site admin I can login and logout so that I can create, edit or delete data. **(Sprint 1)**
+- [x] As a site admin I can enter a profile so that I can see all profile details. **(Sprint 1)**
+- [x] As a site admin I can edit and update personal information. **(Sprint 2)**
+- [x] As a site admin I can Delete a profile from the API. **(Sprint 2)**
 
 ### Games
 
-- [x] As a site admin I can view a list of games created. (Sprint 1)
-- [x] As a site admin I can create a game with all requested details. (Sprint 1)
-- [x] As a site admin I can open a created game on the list so that I can see all of its details. (Sprint 2)
-- [x] As a site admin I can edit all game details. (Sprint 2)
-- [x] As a site admin I can Delete a game and its information stored in the API. (Sprint 2)
+- [x] As a site admin I can view a list of games created. **(Sprint 1)**
+- [x] As a site admin I can create a game with all requested details. **(Sprint 1)**
+- [x] As a site admin I can open a created game on the list so that I can see all of its details. **(Sprint 2)**
+- [x] As a site admin I can edit all game details. **(Sprint 2)**
+- [x] As a site admin I can Delete a game and its information stored in the API. **(Sprint 2)**
 
 ### Reviews
 
-- [x] As a site admin I can view a list of all reviews posted by users. (Sprint 2)
-- [x] As a site admin I can view a single review posted. (Sprint 2)
-- [x] As a site admin I can create a review for a game post. (Sprint 2)
-- [x] As a site admin I can edit the review information. (Sprint 3)
-- [x] As a site admin I can Delete a Review from the API. (Sprint 3)
+- [x] As a site admin I can view a list of all reviews posted by users. **(Sprint 2)**
+- [x] As a site admin I can view a single review posted. **(Sprint 2)**
+- [x] As a site admin I can create a review for a game post. **(Sprint 2)**
+- [x] As a site admin I can edit the review information. **(Sprint 3)**
+- [x] As a site admin I can Delete a Review from the API. **(Sprint 3)**
 
 ### Likes
 
-- [x] As a site admin I can add a like for a games post. (Sprint 1)
-- [x] As a site admin I can edit and change a like saved in the API. (Sprint 1)
-- [x] As a site admin I can remove a like from the API. (Sprint 1)
+- [x] As a site admin I can add a like for a games post. **(Sprint 1)**
+- [x] As a site admin I can edit and change a like saved in the API. **(Sprint 1)**
+- [x] As a site admin I can remove a like from the API. **(Sprint 1)**
 
 ### Ratings
 
-- [x] As a site admin I can create a rating for a game post. (Sprint 3)
-- [x] As a site admin I can edit a rating given. (Sprint 3)
-- [x] As a site admin I can delete a rating from the API. (Sprint 3)
+- [x] As a site admin I can create a rating for a game post. **(Sprint 3)**
+- [x] As a site admin I can edit a rating given. **(Sprint 3)**
+- [x] As a site admin I can delete a rating from the API. **(Sprint 3)**
 
 ## Models used and their datafields
 
