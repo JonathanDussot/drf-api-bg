@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'ratings',
 ]
 SITE_ID = 1
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
