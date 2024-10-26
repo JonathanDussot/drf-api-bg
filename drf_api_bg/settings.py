@@ -81,9 +81,6 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 
-if DEBUG:
-    INSTALLED_APPS += ['django_extensions']
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

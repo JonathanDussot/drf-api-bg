@@ -1,0 +1,24 @@
+Requirement already satisfied: cloudinary in /workspace/.pip-modules/lib/python3.12/site-packages (1.25.0)
+Collecting cloudinary
+  Downloading cloudinary-1.41.0.tar.gz (177 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: six in /home/gitpod/.pyenv/versions/3.12.2/lib/python3.12/site-packages (from cloudinary) (1.16.0)
+Requirement already satisfied: urllib3>=1.26.5 in /workspace/.pip-modules/lib/python3.12/site-packages (from cloudinary) (1.26.18)
+Requirement already satisfied: certifi in /home/gitpod/.pyenv/versions/3.12.2/lib/python3.12/site-packages (from cloudinary) (2024.8.30)
+Building wheels for collected packages: cloudinary
+  Building wheel for cloudinary (pyproject.toml): started
+  Building wheel for cloudinary (pyproject.toml): finished with status 'done'
+  Created wheel for cloudinary: filename=cloudinary-1.41.0-py3-none-any.whl size=139739 sha256=2f5bc3b13c0017db44e1861363754f1ff0930fa06b951b98cb71f2f48ecc6719
+  Stored in directory: /home/gitpod/.cache/pip/wheels/ac/d9/25/87b1c096e325bb22d62186c64bba19a866c668cff5d3a80699
+Successfully built cloudinary
+Installing collected packages: cloudinary
+  Attempting uninstall: cloudinary
+    Found existing installation: cloudinary 1.25.0
+    Uninstalling cloudinary-1.25.0:
+      Successfully uninstalled cloudinary-1.25.0
+Successfully installed cloudinary-1.41.0
